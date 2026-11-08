@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>רחל וויס | החזרי מס, ייעוץ מס והנהלת חשבונות</title>
+  <meta name="description" content="החזרי מס, ייעוץ מס והנהלת חשבונות בליווי אישי של רחל וויס. בודקים עד 6 שנים אחורה אם מגיע לכם כסף בחזרה. השאירו פרטים ורחל תחזור אליכם.">
+  <meta name="theme-color" content="#2B3A4E">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="he_IL">
+  <meta property="og:title" content="רחל וויס | החזרי מס, ייעוץ מס והנהלת חשבונות">
+  <meta property="og:description" content="אולי המדינה חייבת לכם כסף. בודקים יחד, בשפה פשוטה ובליווי אישי.">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&family=Rubik:wght@300;400;500;600&display=swap">
+
+  <!-- סדר הטעינה חשוב: קודם המשתנים, אחר כך הבסיס, הרכיבים והסקשנים -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+
+  <!-- מסמן שה-JS פעיל, כדי שבלעדיו כל התוכן יישאר גלוי -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <script defer src="js/config.js"></script>
+  <script defer src="js/navigation.js"></script>
+  <script defer src="js/reveal.js"></script>
+  <script defer src="js/eligibility.js"></script>
+  <script defer src="js/contact-form.js"></script>
+
+  <!-- נתונים מובנים עבור מנועי חיפוש -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AccountingService",
+    "name": "רחל וויס",
+    "description": "החזרי מס, ייעוץ מס והנהלת חשבונות",
+    "telephone": "+972-55-670-1463",
+    "email": "rw6701463@gmail.com",
+    "areaServed": "IL"
+  }
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">דילוג לתוכן הראשי</a>
+
+  <!-- ========== כותרת עליונה ========== -->
+  <header class="site-header" data-header>
+    <div class="container site-header__inner">
+      <a class="site-header__logo" href="#top" aria-label="רחל וויס, חזרה לראש העמוד">
+        <img src="images/logo.svg" alt="" width="2923" height="769">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="פתיחת תפריט" data-menu-toggle>
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="ניווט ראשי" data-menu>
+        <a href="#check">בדיקה מהירה</a>
+        <a href="#services">שירותים</a>
+        <a href="#why">למה רחל</a>
+        <a href="#process">איך זה עובד</a>
+        <a href="#faq">שאלות נפוצות</a>
+        <a class="btn btn--small btn--primary" href="#contact">דברו עם רחל</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========== פתיח ========== -->
+    <section class="hero" id="top">
+      <div class="container hero__grid">
+        <div class="hero__content">
+          <img class="hero__logo" src="images/logo.svg" width="2923" height="769" data-hero-logo
+               alt="רחל וויס: החזרי מס, ייעוץ מס, הנהלת חשבונות">
+
+          <h1 class="hero__title">אולי המדינה <em>חייבת לכם</em> כסף.</h1>
+          <p class="hero__lead">
+            רוב האנשים לא בודקים, ולכן גם לא יודעים. רחל וויס עוברת איתכם על השנים האחרונות,
+            מסבירה הכול בשפה פשוטה ודואגת שלא תשאירו על השולחן כסף שמגיע לכם.
+          </p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#check">בואו נבדוק אם מגיע לכם</a>
+            <a class="btn btn--ghost" href="tel:+972556701463">
+              חיוג ישיר: <span dir="ltr">055-670-1463</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <span class="shard shard--navy"></span>
+          <span class="shard shard--photo">
+            <img src="images/hero-tax-refund.webp" width="1024" height="559" alt="" fetchpriority="high">
+          </span>
+          <span class="shard shard--teal"></span>
+        </div>
+
+        <p class="hero__note">
+          <strong>6 שנים</strong>
+          זה כמה אחורה אפשר בדרך כלל לבקש החזר מס
+        </p>
+      </div>
+    </section>
+
+    <!-- ========== בדיקה מהירה ========== -->
+    <section class="check section" id="check" aria-labelledby="check-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">בדיקה מהירה, חצי דקה</p>
+          <h2 id="check-title">מה מאלה קרה לכם בשש השנים האחרונות?</h2>
+          <p>כל סימון הוא סיבה טובה לבדוק את התיק. הבדיקה הזו לא נשמרת ולא נשלחת לאף אחד.</p>
+        </header>
+
+        <div class="check__layout">
+          <fieldset class="check__options" data-eligibility data-reveal>
+            <legend class="visually-hidden">סמנו את האירועים שקרו לכם</legend>
+            <label class="chip"><input type="checkbox"><span>החלפתי מקום עבודה</span></label>
+            <label class="chip"><input type="checkbox"><span>הייתה לי תקופה בלי עבודה</span></label>
+            <label class="chip"><input type="checkbox"><span>סיימתי תואר או לימודי מקצוע</span></label>
+            <label class="chip"><input type="checkbox"><span>תרמתי למוסד מוכר</span></label>
+            <label class="chip"><input type="checkbox"><span>שילמתי ביטוח חיים פרטי או דרך המשכנתא</span></label>
+            <label class="chip"><input type="checkbox"><span>יצאתי לחופשת לידה</span></label>
+            <label class="chip"><input type="checkbox"><span>השתחררתי מצה״ל או משירות לאומי</span></label>
+            <label class="chip"><input type="checkbox"><span>גרתי ביישוב עם הטבות מס</span></label>
+            <label class="chip"><input type="checkbox"><span>הפסדתי בהשקעות בשוק ההון</span></label>
+            <label class="chip"><input type="checkbox"><span>משכתי פיצויים או כספי גמל</span></label>
+            <label class="chip"><input type="checkbox"><span>מכרתי דירה ושילמתי מס שבח</span></label>
+            <label class="chip"><input type="checkbox"><span>יש במשפחה ילד או קרוב עם מוגבלות</span></label>
+          </fieldset>
+
+          <aside class="check__result" data-eligibility-result data-reveal>
+            <div class="check__chart" aria-hidden="true">
+              <img src="images/growth-lines.svg" alt="" width="1563" height="624" loading="lazy">
+            </div>
+            <p class="check__count" aria-hidden="true"><span data-eligibility-count>0</span> סימונים</p>
+            <p class="check__message" role="status" data-eligibility-message>סמנו את מה שקרה לכם ונראה אם שווה לבדוק.</p>
+            <a class="btn btn--primary" href="#contact">אני רוצה שרחל תבדוק לי</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== שירותים ========== -->
+    <section class="services section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">מה עושים כאן</p>
+          <h2 id="services-title">שלושה תחומים, כתובת אחת</h2>
+          <p>במקום לרוץ בין אנשי מקצוע, הכול מרוכז אצל מי שכבר מכירה את התמונה המלאה שלכם.</p>
+        </header>
+
+        <ol class="service-list">
+          <li class="service" data-reveal>
+            <span class="service__num" aria-hidden="true">01</span>
+            <h3>החזרי מס</h3>
+            <p>
+              שכירים רבים משלמים יותר מס ממה שהיו צריכים, בלי לדעת. עוברים יחד על השנים האחרונות,
+              מאתרים זיכויים וניכויים שלא נוצלו, ומגישים בקשה מסודרת להחזר.
+            </p>
+          </li>
+          <li class="service" data-reveal>
+            <span class="service__num" aria-hidden="true">02</span>
+            <h3>ייעוץ מס</h3>
+            <p>
+              פותחים עסק? מוכרים נכס? יש הכנסה נוספת? ההחלטות הגדולות הן בדיוק הרגע לעצור ולשאול.
+              ייעוץ בזמן עוזר לתכנן נכון מראש, ולהימנע מהפתעות מול רשות המסים.
+            </p>
+          </li>
+          <li class="service" data-reveal>
+            <span class="service__num" aria-hidden="true">03</span>
+            <h3>הנהלת חשבונות</h3>
+            <p>
+              לעצמאים ולעסקים קטנים: ניהול ספרים, דיווחים שוטפים ודוחות שנתיים. אתם מתרכזים בעסק,
+              והניירת נשארת מסודרת ובזמן.
+            </p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== למה רחל ========== -->
+    <section class="why section" id="why" aria-labelledby="why-title">
+      <div class="container why__grid">
+        <header class="why__head" data-reveal>
+          <p class="eyebrow eyebrow--light">למה דווקא רחל</p>
+          <h2 id="why-title">מס הוא עניין מסובך. העבודה עם רחל לא.</h2>
+          <p>
+            מאחורי כל תיק יש אדם, משפחה או עסק, ולא רק טפסים. לכן הגישה כאן פשוטה:
+            להקשיב, להסביר, ולטפל בדברים עד הסוף.
+          </p>
+        </header>
+
+        <ul class="why__list">
+          <li data-reveal>
+            <h3>יחס אישי</h3>
+            <p>אתם מדברים ישירות עם רחל, ולא עם מוקד. היא מכירה את התיק ואת הסיפור שמאחוריו.</p>
+          </li>
+          <li data-reveal>
+            <h3>שפה של בני אדם</h3>
+            <p>בלי מושגים מפחידים ובלי אותיות קטנות. תמיד תדעו מה קורה בתיק שלכם ולמה.</p>
+          </li>
+          <li data-reveal>
+            <h3>הכול במקום אחד</h3>
+            <p>החזרי מס, ייעוץ והנהלת חשבונות אצל אותה אחת, כך ששום פרט לא נופל בין הכיסאות.</p>
+          </li>
+          <li data-reveal>
+            <h3>סדר ושקיפות</h3>
+            <p>מקבלים תמונה ברורה מההתחלה: מה בודקים, אילו מסמכים צריך ומה השלב הבא.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== איך זה עובד ========== -->
+    <section class="process section" id="process" aria-labelledby="process-title">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">איך זה עובד</p>
+          <h2 id="process-title">ארבעה צעדים, בלי כאב ראש</h2>
+        </header>
+
+        <ol class="steps">
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">1</span>
+            <h3>משאירים פרטים</h3>
+            <p>טלפון, מייל או הטופס שכאן למטה. זה לוקח פחות מדקה.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">2</span>
+            <h3>מדברים</h3>
+            <p>רחל חוזרת אליכם, שומעת מה קרה ומסבירה מה כדאי לבדוק.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">3</span>
+            <h3>אוספים ובודקים</h3>
+            <p>מקבלים רשימה ברורה של מסמכים, ורחל עוברת עליהם לעומק.</p>
+          </li>
+          <li class="step" data-reveal>
+            <span class="step__num" aria-hidden="true">4</span>
+            <h3>מטפלים עד הסוף</h3>
+            <p>הכול מוגש מסודר, ואתם מקבלים עדכון על כל התקדמות.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== שאלות נפוצות ========== -->
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq__grid">
+        <header class="section-head faq__head" data-reveal>
+          <p class="eyebrow">שאלות נפוצות</p>
+          <h2 id="faq-title">מה שבדרך כלל שואלים</h2>
+        </header>
+
+        <div class="faq__list" data-reveal>
+          <details>
+            <summary>כמה שנים אחורה אפשר לבקש החזר מס?</summary>
+            <p>בדרך כלל אפשר להגיש בקשה עבור עד שש שנות מס אחורה. כל שנה שעוברת יוצאת מהחלון הזה, ולכן כדאי לבדוק מוקדם ולא לדחות.</p>
+          </details>
+          <details>
+            <summary>אני שכיר או שכירה. זה רלוונטי גם לי?</summary>
+            <p>בהחלט. דווקא שכירים הם אלה שלרוב לא בודקים, כי המס יורד אוטומטית מהמשכורת. שינויים כמו החלפת עבודה, סיום לימודים או תרומות יכולים להשפיע על המס שהיה צריך לשלם.</p>
+          </details>
+          <details>
+            <summary>בטוח שמגיע לי החזר?</summary>
+            <p>לא תמיד, וזה תלוי בנתונים האישיים של כל אחד. בשביל זה עושים בדיקה: כדי לדעת ולא לנחש.</p>
+          </details>
+          <details>
+            <summary>אילו מסמכים צריך להכין?</summary>
+            <p>לרוב מתחילים מטופסי 106 מהמעסיקים ומאישורים על אירועים רלוונטיים, כמו תרומות, ביטוח חיים או סיום לימודים. רחל תגיד לכם בדיוק מה צריך לפי המקרה שלכם.</p>
+          </details>
+          <details>
+            <summary>כמה זמן לוקח התהליך?</summary>
+            <p>זה תלוי במורכבות התיק ובזמני הטיפול ברשות המסים. רחל תעדכן אתכם לאורך הדרך.</p>
+          </details>
+          <details>
+            <summary>מה קורה אחרי שמשאירים פרטים?</summary>
+            <p>הפרטים מגיעים ישירות למייל של רחל, והיא חוזרת אליכם לשיחה קצרה כדי להבין במה אפשר לעזור.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== יצירת קשר ========== -->
+    <section class="contact section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div class="contact__intro" data-reveal>
+          <p class="eyebrow eyebrow--dark">יצירת קשר</p>
+          <h2 id="contact-title">הצעד הראשון לוקח פחות מדקה.</h2>
+          <p>אפשר להתקשר עכשיו, או להשאיר פרטים ורחל תחזור אליכם.</p>
+
+          <ul class="contact__links">
+            <li>
+              <a href="tel:+972556701463">
+                <span>טלפון</span>
+                <strong dir="ltr">055-670-1463</strong>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:rw6701463@gmail.com">
+                <span>מייל</span>
+                <strong dir="ltr">rw6701463@gmail.com</strong>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form" data-contact-form novalidate data-reveal>
+          <h3>השאירו פרטים ורחל תחזור אליכם</h3>
+
+          <div class="field">
+            <label for="contact-name">שם מלא</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error">
+            <p class="field__error" id="contact-name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-phone">טלפון</label>
+            <input id="contact-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" required aria-describedby="contact-phone-error">
+            <p class="field__error" id="contact-phone-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="contact-email">מייל</label>
+            <input id="contact-email" name="email" type="email" inputmode="email" autocomplete="email" dir="ltr" required aria-describedby="contact-email-error">
+            <p class="field__error" id="contact-email-error"></p>
+          </div>
+
+          <!-- מלכודת לבוטים: שדה מוסתר שאדם אמיתי לא ימלא -->
+          <input class="contact-form__trap" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button class="btn btn--primary btn--block" type="submit" data-submit>שלחו לרחל</button>
+
+          <p class="contact-form__status" role="status" data-status></p>
+          <p class="contact-form__privacy">
+            הפרטים ישמשו ליצירת קשר בלבד, ונשלחים למייל של רחל דרך שירות שליחת הטפסים Web3Forms.
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== כותרת תחתונה ========== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <img src="images/logo-light.svg" alt="רחל וויס" width="2923" height="769" loading="lazy">
+      <p class="site-footer__contact">
+        <a href="tel:+972556701463" dir="ltr">055-670-1463</a>
+        <a href="mailto:rw6701463@gmail.com" dir="ltr">rw6701463@gmail.com</a>
+      </p>
+      <p class="site-footer__legal">
+        המידע באתר הוא כללי בלבד ואינו מהווה ייעוץ מס אישי. הזכאות להחזר נבדקת לפי הנתונים של כל אדם.
+      </p>
+    </div>
+  </footer>
+
+  <!-- סרגל פעולה קבוע למובייל -->
+  <div class="mobile-bar" data-mobile-bar>
+    <a class="btn btn--ghost" href="tel:+972556701463">התקשרו</a>
+    <a class="btn btn--primary" href="#contact">השאירו פרטים</a>
+  </div>
+</body>
+</html>

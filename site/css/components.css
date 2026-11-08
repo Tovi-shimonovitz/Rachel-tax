@@ -1,0 +1,183 @@
+/* רכיבים שחוזרים בכמה מקומות בדף */
+
+/* ---------- כפתורים ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 3.25rem;
+  padding: 0.7rem 1.6rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease);
+}
+
+.btn:hover { transform: translateY(-2px); }
+
+.btn--primary {
+  background: var(--teal);
+  color: var(--navy-deep);
+}
+
+.btn--primary:hover { background: var(--teal-bright); }
+
+.btn--ghost {
+  border-color: var(--navy);
+  background: transparent;
+  color: var(--navy);
+}
+
+.btn--ghost:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.btn--small {
+  min-height: 2.6rem;
+  padding: 0.3rem 1.1rem;
+  font-size: 1rem;
+}
+
+.btn--block { width: 100%; }
+
+.btn[disabled] {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
+}
+
+/* ---------- כותרת סקשן ---------- */
+.eyebrow {
+  margin-block-end: 0.9rem;
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 0.55em;
+  height: 0.95em;
+  margin-inline-end: 0.55em;
+  background: var(--teal);
+  clip-path: polygon(0 0, 55% 0, 100% 100%, 45% 100%);
+  vertical-align: -0.1em;
+}
+
+.eyebrow--light { color: var(--teal-bright); }
+.eyebrow--light::before { background: var(--teal-bright); }
+.eyebrow--dark { color: var(--navy); }
+.eyebrow--dark::before { background: var(--navy); }
+
+.section-head {
+  max-width: 44rem;
+  margin-block-end: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.section-head h2 + p {
+  margin-block-start: 1rem;
+  color: var(--ink-soft);
+  font-size: var(--text-lg);
+}
+
+/* ---------- כרטיסיות סימון ---------- */
+.chip {
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.chip input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.chip span {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+  padding: 0.85rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--white);
+  line-height: 1.3;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* המקבילית הקטנה שמחליפה את ריבוע הסימון */
+.chip span::before {
+  content: '';
+  flex: none;
+  width: 1rem;
+  height: 1.3rem;
+  border: 0;
+  background: var(--line);
+  clip-path: polygon(0 0, 55% 0, 100% 100%, 45% 100%);
+  transition: background-color 0.2s;
+}
+
+.chip:hover span { border-color: var(--teal); }
+.chip input:checked + span {
+  border-color: var(--teal);
+  background: var(--mist);
+  font-weight: 600;
+}
+.chip input:checked + span::before { background: var(--teal); }
+.chip input:focus-visible + span {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: 2px;
+}
+
+/* ---------- שדות טופס ---------- */
+.field { margin-block-end: 1.1rem; }
+
+.field label {
+  display: block;
+  margin-block-end: 0.3rem;
+  font-weight: 600;
+}
+
+.field input {
+  width: 100%;
+  min-height: 3.1rem;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  text-align: start;
+}
+
+/* שדות באנגלית נשארים מיושרים לימין, כמו שאר הטופס */
+.field input[dir='ltr'] { text-align: right; }
+
+.field input:focus {
+  border-color: var(--teal-deep);
+  outline: 2px solid var(--teal-deep);
+  outline-offset: 0;
+  background: var(--white);
+}
+
+.field input[aria-invalid='true'] { border-color: var(--error); }
+
+.field__error {
+  min-height: 0;
+  color: var(--error);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.field__error:not(:empty) { margin-block-start: 0.25rem; }

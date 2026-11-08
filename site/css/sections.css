@@ -1,0 +1,661 @@
+/* עיצוב לכל סקשן בדף, לפי סדר הופעתו */
+
+/* ---------- כותרת עליונה ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgb(250 248 243 / 0.92);
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.25s;
+}
+
+.site-header.is-scrolled { box-shadow: 0 1px 0 var(--line); }
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: var(--header-height);
+}
+
+.site-header__logo img {
+  width: auto;
+  height: 46px;
+}
+
+/* הלוגו הקטן מופיע רק אחרי שהלוגו הגדול שבפתיח יוצא מהמסך */
+.js .site-header:not(.is-scrolled) .site-header__logo {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.site-header__logo { transition: opacity 0.25s; }
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.9rem);
+}
+
+.site-nav a:not(.btn) {
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(var(--teal), var(--teal)) no-repeat right bottom / 0 2px;
+  transition: background-size 0.25s var(--ease);
+}
+
+.site-nav a:not(.btn):hover { background-size: 100% 2px; }
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--navy);
+  transition: transform 0.25s, opacity 0.2s;
+}
+
+.menu-toggle[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-toggle[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+.menu-toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 960px) {
+  .menu-toggle { display: flex; }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    padding: 0.75rem var(--gutter) 1.25rem;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+  }
+
+  .site-nav.is-open { display: flex; }
+  .site-nav a:not(.btn) { padding: 0.65rem 0; }
+  .site-nav .btn { margin-block-start: 0.5rem; }
+
+  /* בלי JS אי אפשר לפתוח את התפריט, אז הוא נשאר גלוי */
+  html:not(.js) .menu-toggle { display: none; }
+  html:not(.js) .site-nav {
+    position: static;
+    display: flex;
+    box-shadow: none;
+  }
+}
+
+/* ---------- פתיח ---------- */
+.hero {
+  position: relative;
+  padding-block: clamp(1rem, 2vw, 2rem) clamp(3.5rem, 6vw, 6rem);
+}
+
+.hero__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: center;
+}
+
+.hero__logo {
+  width: min(100%, 500px);
+  margin-block-end: clamp(2.25rem, 4vw, 3.5rem);
+}
+
+.hero__title {
+  font-size: var(--title-lg);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+.hero__title em {
+  position: relative;
+  z-index: 0;
+  font-style: normal;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* הדגשה משופעת מתחת למילים */
+.hero__title em::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 62% -0.12em 0.06em;
+  background: var(--teal);
+  opacity: 0.4;
+  transform: skewX(21deg);
+}
+
+.hero__lead {
+  max-width: 34rem;
+  margin-block-start: 1.4rem;
+  color: var(--ink-soft);
+  font-size: var(--text-lg);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block-start: 2rem;
+}
+
+/* שלושה פסים גדולים שמהדהדים את ה-W שבלוגו */
+.hero__visual {
+  position: relative;
+  aspect-ratio: 1 / 1.08;
+  max-height: 680px;
+  width: 100%;
+}
+
+.shard {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  clip-path: var(--shard);
+}
+
+.shard--photo {
+  z-index: 2;
+  left: 8%;
+  width: 92%;
+  overflow: hidden;
+}
+
+.shard--photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% center;
+  animation: hero-drift 1.4s var(--ease) both;
+}
+
+.shard--navy {
+  z-index: 1;
+  left: 34%;
+  width: 66%;
+  top: 8%;
+  bottom: -6%;
+  background: var(--navy);
+}
+
+.shard--teal {
+  z-index: 3;
+  left: 0;
+  width: 44%;
+  top: 34%;
+  bottom: -2%;
+  background: var(--teal);
+  opacity: 0.92;
+  animation: hero-rise 1s 0.15s var(--ease) both;
+}
+
+@keyframes hero-drift {
+  from { transform: scale(1.1); }
+}
+
+@keyframes hero-rise {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+.hero__note {
+  position: absolute;
+  z-index: 4;
+  bottom: -1.25rem;
+  left: 0;
+  width: 15.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--white);
+  border-inline-end: 4px solid var(--teal);
+  box-shadow: var(--shadow);
+  font-size: var(--text-sm);
+  line-height: 1.35;
+}
+
+.hero__note strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+@media (max-width: 960px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .hero__logo { width: min(100%, 420px); margin-inline: auto; }
+  .hero__visual { max-width: 520px; margin-inline: auto; }
+  .hero__note {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    margin-block-start: -4rem;
+    margin-inline: auto 0;
+  }
+}
+
+/* ---------- בדיקה מהירה ---------- */
+.check { background: var(--sand); }
+
+.check__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: start;
+}
+
+.check__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.check__result {
+  position: sticky;
+  top: calc(var(--header-height) + 1.25rem);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  background: var(--navy);
+  color: var(--white);
+}
+
+/* הגרף המלא מופיע חיוור ברקע, והחלק הבהיר נחשף ככל שמסמנים יותר.
+   eligibility.js מעדכן את --progress */
+.check__chart {
+  position: relative;
+  direction: ltr;
+  margin-block-end: 1.5rem;
+}
+
+.check__chart::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../images/growth-lines.svg') center / 100% 100% no-repeat;
+  opacity: 0.18;
+}
+
+.check__chart img {
+  position: relative;
+  width: 100%;
+  clip-path: inset(0 calc(100% - var(--progress, 100%)) 0 0);
+  transition: clip-path 0.55s var(--ease);
+}
+
+.check__count {
+  color: var(--teal-bright);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+}
+
+.check__count span { font-size: 2.5rem; font-weight: 500; line-height: 1; }
+
+.check__message {
+  min-height: 3.3em;
+  margin-block: 0.6rem 1.4rem;
+  font-size: var(--text-lg);
+  line-height: 1.4;
+}
+
+.check__result .btn { width: 100%; }
+
+@media (max-width: 960px) {
+  .check__layout { grid-template-columns: minmax(0, 1fr); }
+  .check__result { position: static; }
+}
+
+@media (max-width: 560px) {
+  .check__options { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- שירותים ---------- */
+.service {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 18rem) minmax(0, 1fr);
+  gap: 1rem clamp(1.5rem, 4vw, 3.5rem);
+  align-items: baseline;
+  padding-block: clamp(1.75rem, 3vw, 2.75rem);
+  border-block-start: 1.5px solid var(--navy);
+}
+
+.service:last-child { border-block-end: 1.5px solid var(--navy); }
+
+.service__num {
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: var(--title-sm);
+  font-weight: 300;
+}
+
+.service h3 {
+  font-size: clamp(1.75rem, 1.4rem + 1.3vw, 2.5rem);
+  transition: transform 0.3s var(--ease);
+}
+
+.service:hover h3 { transform: translateX(-0.4rem); }
+
+.service p {
+  max-width: 40rem;
+  color: var(--ink-soft);
+  font-size: var(--text-lg);
+}
+
+@media (max-width: 760px) {
+  .service { grid-template-columns: 3rem minmax(0, 1fr); }
+  .service p { grid-column: 1 / -1; }
+}
+
+/* ---------- למה רחל ---------- */
+.why {
+  --edge: clamp(2rem, 6vw, 5.5rem);
+  position: relative;
+  padding-block: calc(var(--section-gap) + var(--edge));
+  background: var(--navy);
+  color: var(--white);
+  clip-path: polygon(0 0, 100% var(--edge), 100% 100%, 0 calc(100% - var(--edge)));
+}
+
+.why__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: start;
+}
+
+.why__head p:last-child {
+  margin-block-start: 1.25rem;
+  color: #C9D3DF;
+  font-size: var(--text-lg);
+}
+
+.why__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.75rem, 3vw, 2.75rem) clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.why__list h3 {
+  margin-block-end: 0.5rem;
+  padding-block-start: 0.85rem;
+  border-block-start: 3px solid var(--teal);
+}
+
+.why__list p { color: #C9D3DF; }
+
+@media (max-width: 860px) {
+  .why__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .why__list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- איך זה עובד ---------- */
+/* המדרגות עולות לעבר הצעד האחרון, כמו הגרף שבאזור הבדיקה */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.step {
+  padding: 1.5rem 1.25rem;
+  background: var(--white);
+  border-block-end: 4px solid var(--teal);
+}
+
+.step:nth-child(1) { padding-block-start: 1.5rem; }
+.step:nth-child(2) { padding-block-start: 3.25rem; }
+.step:nth-child(3) { padding-block-start: 5rem; }
+.step:nth-child(4) {
+  padding-block-start: 6.75rem;
+  background: var(--mist);
+}
+
+.step__num {
+  display: block;
+  margin-block-end: 0.5rem;
+  color: var(--teal-deep);
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.step h3 { margin-block-end: 0.4rem; }
+.step p { color: var(--ink-soft); }
+
+@media (max-width: 860px) {
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .step:nth-child(n) { padding-block-start: 1.5rem; }
+}
+
+/* ---------- שאלות נפוצות ---------- */
+.faq { padding-block-start: 0; }
+
+.faq__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr);
+  gap: clamp(1rem, 4vw, 4rem);
+}
+
+.faq__head { margin-block-end: 0; }
+
+.faq details { border-block-end: 1.5px solid var(--line); }
+.faq details:first-child { border-block-start: 1.5px solid var(--line); }
+
+.faq summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-block: 1.1rem;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::after {
+  content: '+';
+  flex: none;
+  color: var(--teal-deep);
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.25s var(--ease);
+}
+
+.faq details[open] summary::after { transform: rotate(45deg); }
+
+.faq details p {
+  padding-block-end: 1.25rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 860px) {
+  .faq__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- יצירת קשר ---------- */
+.contact {
+  position: relative;
+  overflow: hidden;
+  background: var(--teal);
+  color: var(--navy-deep);
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset-block: -10%;
+  left: -8%;
+  width: 62%;
+  background: var(--teal-bright);
+  opacity: 0.35;
+  clip-path: var(--shard);
+}
+
+.contact__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+}
+
+.contact__intro h2 + p {
+  margin-block-start: 1rem;
+  font-size: var(--text-lg);
+}
+
+.contact__links { margin-block-start: 2.25rem; }
+
+.contact__links a {
+  display: block;
+  padding-block: 0.8rem;
+  border-block-start: 1.5px solid var(--navy-deep);
+  text-decoration: none;
+}
+
+.contact__links span {
+  display: block;
+  font-size: var(--text-sm);
+}
+
+.contact__links strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1rem + 1.4vw, 2rem);
+  font-weight: 500;
+  overflow-wrap: anywhere;
+  text-align: right;
+}
+
+.contact__links a:hover strong { text-decoration: underline; }
+
+.contact-form {
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  background: var(--white);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.contact-form h3 { margin-block-end: 1.5rem; }
+
+/* מוסתר מאנשים, ורק בוטים ממלאים אותו */
+.contact-form__trap { display: none; }
+
+.contact-form__status {
+  margin-block-start: 0.9rem;
+  font-weight: 600;
+}
+
+.contact-form__status:empty { display: none; }
+.contact-form__status[data-state='success'] { color: var(--teal-deep); }
+.contact-form__status[data-state='error'] { color: var(--error); }
+
+.contact-form__privacy {
+  margin-block-start: 0.9rem;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  .contact__grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- כותרת תחתונה ---------- */
+.site-footer {
+  padding-block: 3rem;
+  background: var(--navy-deep);
+  color: #C9D3DF;
+}
+
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem 3rem;
+  align-items: center;
+}
+
+.site-footer img { width: 220px; }
+
+.site-footer__contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem 2rem;
+  font-weight: 600;
+}
+
+.site-footer__contact a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.site-footer__contact a:hover { text-decoration: underline; }
+.site-footer :focus-visible { outline-color: var(--teal-bright); }
+
+.site-footer__legal {
+  grid-column: 1 / -1;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid rgb(255 255 255 / 0.15);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .site-footer__inner { grid-template-columns: minmax(0, 1fr); }
+  .site-footer__contact { justify-content: flex-start; }
+}
+
+/* ---------- סרגל פעולה במובייל ---------- */
+.mobile-bar { display: none; }
+
+@media (max-width: 720px) {
+  .js .mobile-bar {
+    position: fixed;
+    z-index: 40;
+    inset-inline: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 0.5rem;
+    padding: 0.5rem var(--gutter) calc(0.5rem + env(safe-area-inset-bottom));
+    background: var(--paper);
+    box-shadow: 0 -8px 24px -14px rgb(31 43 59 / 0.4);
+    transition: transform 0.25s var(--ease);
+  }
+
+  .js .mobile-bar.is-hidden { transform: translateY(110%); }
+  .js .site-footer { padding-block-end: 6rem; }
+}
