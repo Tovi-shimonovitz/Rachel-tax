@@ -32,6 +32,7 @@
   <script defer src="js/reveal.js"></script>
   <script defer src="js/eligibility.js"></script>
   <script defer src="js/contact-form.js"></script>
+  <script defer src="js/copy-email.js"></script>
 
   <!-- נתונים מובנים עבור מנועי חיפוש -->
   <script type="application/ld+json">
@@ -246,7 +247,7 @@
           <li class="step" data-reveal>
             <span class="step__num" aria-hidden="true">2</span>
             <h3>מדברים</h3>
-            <p>רחל חוזרת אליכם, שומעת מה קרה ומסבירה מה כדאי לבדוק.</p>
+            <p>ניצור קשר, נבדוק את הנתונים ונסביר את התהליך.</p>
           </li>
           <li class="step" data-reveal>
             <span class="step__num" aria-hidden="true">3</span>
@@ -256,7 +257,7 @@
           <li class="step" data-reveal>
             <span class="step__num" aria-hidden="true">4</span>
             <h3>מטפלים עד הסוף</h3>
-            <p>הכול מוגש מסודר, ואתם מקבלים עדכון על כל התקדמות.</p>
+            <p>הכול מוגש מסודר, ואתם מתעדכנים בתהליך עד שהכסף אצלכם בחשבון.</p>
           </li>
         </ol>
       </div>
@@ -319,6 +320,10 @@
                 <span>מייל</span>
                 <strong dir="ltr">rw6701463@gmail.com</strong>
               </a>
+              <!-- למי שהלחיצה על המייל לא פותחת אצלו אפליקציית מייל -->
+              <button class="copy-btn" type="button" data-copy="rw6701463@gmail.com" hidden>
+                <span aria-live="polite" data-copy-label>העתקת המייל</span>
+              </button>
             </li>
           </ul>
         </div>

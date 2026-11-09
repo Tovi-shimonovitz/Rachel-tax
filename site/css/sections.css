@@ -539,11 +539,39 @@
 
 .contact__links { margin-block-start: 2.25rem; }
 
-.contact__links a {
-  display: block;
+.contact__links li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1rem;
   padding-block: 0.8rem;
   border-block-start: 1.5px solid var(--navy-deep);
+}
+
+.contact__links a {
+  flex: 1 1 auto;
+  min-width: 0;
   text-decoration: none;
+}
+
+.copy-btn {
+  min-height: 2.5rem;
+  padding: 0.3rem 0.9rem;
+  border: 1.5px solid var(--navy-deep);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--navy-deep);
+  font: inherit;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.copy-btn:hover,
+.copy-btn[data-copied] {
+  background: var(--navy-deep);
+  color: var(--white);
 }
 
 .contact__links span {
