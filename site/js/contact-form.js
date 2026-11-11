@@ -11,11 +11,6 @@
     name: function (value) {
       return value.length >= 2 ? '' : 'נא למלא שם מלא';
     },
-    phone: function (value) {
-      // מספר ישראלי, עם קידומת 0 או 972 ועם מקפים או רווחים לפי הרצון
-      const digits = value.replace(/[\s()+-]/g, '').replace(/^972/, '0');
-      return /^0\d{8,9}$/.test(digits) ? '' : 'נא למלא מספר טלפון תקין';
-    },
     email: function (value) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) ? '' : 'נא למלא כתובת מייל תקינה';
     },
@@ -60,7 +55,6 @@
       subject: config.emailSubject,
       from_name: config.emailFromName,
       name: form.elements.name.value.trim(),
-      phone: form.elements.phone.value.trim(),
       email: form.elements.email.value.trim(),
     };
 
