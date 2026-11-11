@@ -46,7 +46,7 @@
 
   function setSending(isSending) {
     submitButton.disabled = isSending;
-    submitButton.textContent = isSending ? 'שולחים...' : 'שלחו לרחל';
+    submitButton.textContent = isSending ? 'שולחים...' : 'שלחו לרחלי';
   }
 
   function buildPayload() {
@@ -91,7 +91,7 @@
     try {
       await sendEmail(buildPayload());
       form.reset();
-      setStatus('success', 'הפרטים נשלחו. רחל תחזור אליכם בהקדם.');
+      setStatus('success', 'הפרטים נשלחו. רחלי תחזור אליכם בהקדם.');
     } catch (error) {
       console.error('שליחת הטופס נכשלה:', error);
       setStatus('error', failureMessage);

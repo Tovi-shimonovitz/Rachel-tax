@@ -25,8 +25,8 @@
   }
 
   document.querySelectorAll('[data-copy]').forEach(function (button) {
+    // הודעה לקוראי מסך. הכפתור עצמו מציג רק סמל
     const label = button.querySelector('[data-copy-label]');
-    const originalText = label.textContent;
     let resetTimer;
 
     function showResult(text, isCopied) {
@@ -34,7 +34,7 @@
       button.toggleAttribute('data-copied', isCopied);
       clearTimeout(resetTimer);
       resetTimer = setTimeout(function () {
-        label.textContent = originalText;
+        label.textContent = '';
         button.removeAttribute('data-copied');
       }, RESET_AFTER_MS);
     }
@@ -42,7 +42,7 @@
     button.addEventListener('click', async function () {
       try {
         await copyText(button.dataset.copy);
-        showResult('הועתק ✓', true);
+        showResult('המייל הועתק', true);
       } catch (error) {
         console.error('העתקת המייל נכשלה:', error);
         showResult('לא הצלחנו להעתיק', false);
