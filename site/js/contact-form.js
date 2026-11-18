@@ -58,6 +58,10 @@
       email: form.elements.email.value.trim(),
     };
 
+    // ההודעה לא חובה, ולכן נשלחת רק אם המבקר כתב משהו
+    const message = form.elements.message.value.trim();
+    if (message) payload.message = message;
+
     // Web3Forms חוסם פנייה רק אם השדה הזה קיים בה
     if (form.elements.botcheck.checked) payload.botcheck = true;
     return payload;

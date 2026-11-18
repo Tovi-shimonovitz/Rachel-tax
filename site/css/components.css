@@ -149,7 +149,8 @@
   font-weight: 600;
 }
 
-.field input {
+.field input,
+.field textarea {
   width: 100%;
   min-height: 3.1rem;
   padding: 0.6rem 0.9rem;
@@ -161,10 +162,19 @@
   text-align: start;
 }
 
+.field textarea { resize: vertical; }
+
+.field__optional {
+  font-weight: 400;
+  color: var(--ink-soft, inherit);
+  font-size: var(--text-sm);
+}
+
 /* שדות באנגלית נשארים מיושרים לימין, כמו שאר הטופס */
 .field input[dir='ltr'] { text-align: right; }
 
-.field input:focus {
+.field input:focus,
+.field textarea:focus {
   border-color: var(--teal-deep);
   outline: 2px solid var(--teal-deep);
   outline-offset: 0;
